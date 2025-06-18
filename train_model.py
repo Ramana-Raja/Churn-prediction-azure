@@ -5,6 +5,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from io import BytesIO
 import joblib
+
+
 storage_account_name = os.getenv("AZURE_STORAGE_ACCOUNT")
 storage_account_key = os.getenv("AZURE_STORAGE_KEY")
 
