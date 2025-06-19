@@ -5,9 +5,9 @@ import mlflow
 from sklearn.model_selection import ParameterGrid
 from sklearn.metrics import accuracy_score
 
-df = pd.read_parquet("data.parquet")
+df = pd.read_parquet("C:\Users\\raman\\PycharmProjects\\azure-mlops\\data.parquet")
 
-mlflow.set_tracking_uri("mlflow.db")
+mlflow.set_tracking_uri("sqlite:///C:\\Users\\raman\\PycharmProjects\\azure-mlops\\mlflow.db")
 mlflow.set_experiment("my-experiment-1")
 x = df.drop("Churn",axis=1)
 y = df['Churn']
