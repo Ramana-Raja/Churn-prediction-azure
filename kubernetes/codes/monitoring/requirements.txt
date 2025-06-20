@@ -1,0 +1,4 @@
+pandas
+evidently
+joblib
+azure-storage-blob
