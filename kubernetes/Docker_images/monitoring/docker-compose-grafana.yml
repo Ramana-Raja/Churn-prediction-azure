@@ -4,7 +4,7 @@ services:
   python-app:
     build:
       context: C:/Users/raman/PycharmProjects/azure-mlops/kubernetes
-      dockerfile: Docker_images/monitoring/Dockerfile
+      dockerfile: ../../Dockerfile
     container_name: python-app
     volumes:
       - ./var/log:/var/log

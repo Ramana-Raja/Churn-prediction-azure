@@ -2,3 +2,5 @@ pandas
 evidently
 joblib
 azure-storage-blob
+prometheus-client
+pyarrow
