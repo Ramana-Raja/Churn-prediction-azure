@@ -21,6 +21,9 @@ spec:
           volumeMounts:
             - name: promtail-storage
               mountPath: /var/log/myapp
+          envFrom:
+            - configMapRef:
+                name: monitor-config-secrets
       volumes:
         - name: promtail-storage
           persistentVolumeClaim:

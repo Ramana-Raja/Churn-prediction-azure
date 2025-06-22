@@ -18,7 +18,7 @@ spec:
         - name: promtail
           image: grafana/promtail:2.9.2
           args:
-            - "-config.file=/etc/promtail/promtail.yaml"
+            - "-config.file=/etc/promtail/promtail.yml"
           ports:
             - containerPort: 9080
           volumeMounts:
@@ -35,8 +35,8 @@ spec:
           configMap:
             name: promtail-config
             items:
-              - key: promtail.yaml
-                path: promtail.yaml
+              - key: promtail.yml
+                path: promtail.yml
         - name: shared-logs
           persistentVolumeClaim:
             claimName: promtail-python-pvc

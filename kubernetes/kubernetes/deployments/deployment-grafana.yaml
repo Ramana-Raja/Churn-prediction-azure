@@ -13,6 +13,8 @@ spec:
       labels:
         app: grafana
     spec:
+      securityContext:
+        fsGroup: 472
       containers:
         - name: grafana
           image: grafana/grafana:10.0.3
@@ -21,6 +23,8 @@ spec:
           volumeMounts:
             - name: grafana-storage
               mountPath: /var/lib/grafana
+          securityContext:
+            runAsUser: 472
       volumes:
         - name: grafana-storage
           persistentVolumeClaim:

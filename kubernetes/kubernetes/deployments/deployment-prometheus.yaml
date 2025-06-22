@@ -13,16 +13,29 @@ spec:
       labels:
         app: prometheus
     spec:
+      securityContext:
+        fsGroup: 65534
       containers:
         - name: prometheus
           image: prom/prometheus:latest
+          args:
+            - "--config.file=/etc/prometheus/prometheus.yml"
+          securityContext:
+            runAsUser: 65534
+            runAsGroup: 65534
           ports:
             - containerPort: 9090
           volumeMounts:
             - name: prometheus-storage
               mountPath: /prometheus
+            - name: prometheus-config
+              mountPath: /etc/prometheus
+              readOnly: true
       volumes:
         - name: prometheus-storage
           persistentVolumeClaim:
             claimName: prometheus-pvc
+        - name: prometheus-config
+          configMap:
+            name: prometheus-config
 
