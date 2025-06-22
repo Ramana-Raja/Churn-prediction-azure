@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: monitor
+  namespace: monitoring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: monitor
+  template:
+    metadata:
+      labels:
+        app: monitor
+    spec:
+      containers:
+        - name: monitor
+          image: ramanaraja/churn-monitor:latest
+          ports:
+            - containerPort: 8000
+          volumeMounts:
+            - name: promtail-storage
+              mountPath: /var/log/myapp
+      volumes:
+        - name: promtail-storage
+          persistentVolumeClaim:
+            claimName: promtail-python-pvc
+
