@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: promtail
+  namespace: monitoring
+  labels:
+    app: promtail
+spec:
+  selector:
+    matchLabels:
+      app: promtail
+  template:
+    metadata:
+      labels:
+        app: promtail
+    spec:
+      containers:
+        - name: promtail
+          image: grafana/promtail:2.9.2
+          args:
+            - "-config.file=/etc/promtail/promtail.yaml"
+          ports:
+            - containerPort: 9080
+          volumeMounts:
+            - name: config
+              mountPath: /etc/promtail
+              readOnly: true
+            - name: shared-logs
+              mountPath: /var/log/myapp
+              readOnly: true
+            - name: positions
+              mountPath: /tmp
+      volumes:
+        - name: config
+          configMap:
+            name: promtail-config
+            items:
+              - key: promtail.yaml
+                path: promtail.yaml
+        - name: shared-logs
+          persistentVolumeClaim:
+            claimName: promtail-python-pvc
+        - name: positions
+          emptyDir: {}
