@@ -74,7 +74,13 @@ def monitor():
     print(result['metrics'][2]['value']['share'])
 
 if __name__ == "__main__":
+    import logging
+    logging.basicConfig(
+        filename='/var/log/myapp.log',
+        level=logging.INFO,
+        format='%(asctime)s - %(levelname)s - %(message)s'
+    )
+
     while True:
-        print("new thing")
-        monitor()
+        logging.info("Python app started")
         time.sleep(5)
