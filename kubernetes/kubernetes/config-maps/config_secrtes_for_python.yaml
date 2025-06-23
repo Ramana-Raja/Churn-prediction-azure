@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: monitor-config-secrets
+  namespace: monitoring
+data:
+  AZURE_STORAGE_ACCOUNT: "STORAGE_NAME"
+  AZURE_STORAGE_KEY: "KEY"
