@@ -15,15 +15,14 @@ data:
       path_prefix: /var/loki
       storage:
         azure:
-          account_name: ${AZURE_STORAGE_ACCOUNT_NAME}
-          account_key: ${AZURE_STORAGE_ACCOUNT_KEY}    # Better to inject via env or secret
-          container_name: ${AZURE_BLOB_CONTAINER}
-      replication_factor: 3
+          account_name: "STORAGE_NAME"
+          account_key: "KEY"
+          container_name: "loki-storage"
+      replication_factor: 1
       ring:
-        instance_addr: ${POD_IP}  # use downward API in k8s manifest
         kvstore:
-          store: kubernetes     # uses Kubernetes API for ring coordination
-          
+          store: inmemory
+      
     ingester:
       chunk_idle_period: 5s
       max_chunk_age: 1h

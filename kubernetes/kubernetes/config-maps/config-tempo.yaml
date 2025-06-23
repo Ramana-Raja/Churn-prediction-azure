@@ -16,10 +16,12 @@ data:
             http:
 
     storage:
-      azure:
-        account_name: "mlopsdata555"
-        account_key: "YOUR_AZURE_STORAGE_KEY"
-        container_name: "tempo-storage"
+      trace:
+        backend: azure
+        azure:
+          container_name: "tempo-storage"
+          storage_account_name: <STORAGE_NAME>
+          storage_account_key: <KEY>
 
     compactor:
       compaction:

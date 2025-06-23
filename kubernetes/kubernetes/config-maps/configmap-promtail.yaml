@@ -21,4 +21,4 @@ data:
               - localhost
             labels:
               job: python-app
-              __path__: /var/log/myapp/*.log
+              __path__: /var/log/myapp/myapp.log

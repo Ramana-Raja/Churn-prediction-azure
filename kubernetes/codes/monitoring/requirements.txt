@@ -4,3 +4,7 @@ joblib
 azure-storage-blob
 prometheus-client
 pyarrow
+opentelemetry-api
+opentelemetry-sdk
+opentelemetry-exporter-otlp
+opentelemetry-instrumentation

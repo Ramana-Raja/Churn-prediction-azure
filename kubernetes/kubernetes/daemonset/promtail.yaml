@@ -26,7 +26,7 @@ spec:
               mountPath: /etc/promtail
               readOnly: true
             - name: shared-logs
-              mountPath: /var/log/myapp
+              mountPath: /var/log/
               readOnly: true
             - name: positions
               mountPath: /tmp
