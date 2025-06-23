@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tempo-config
+  namespace: monitoring
+data:
+  tempo.yaml: |
+    server:
+      http_listen_port: 3200
+
+    distributor:
+      receivers:
+        otlp:
+          protocols:
+            grpc:
+            http:
+
+    storage:
+      azure:
+        account_name: "mlopsdata555"
+        account_key: "YOUR_AZURE_STORAGE_KEY"
+        container_name: "tempo-storage"
+
+    compactor:
+      compaction:
+        block_retention: 48h
