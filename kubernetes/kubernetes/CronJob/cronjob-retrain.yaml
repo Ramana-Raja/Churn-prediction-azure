@@ -1,0 +1,30 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: model-retrain
+  namespace: monitoring
+spec:
+  schedule: "0 * * * *"
+  jobTemplate:
+    spec:
+      ttlSecondsAfterFinished: 600
+      backoffLimit: 3
+      template:
+        spec:
+          restartPolicy: OnFailure
+          containers:
+            - name: retainer
+              image: ramanaraja/churn-retrain:latest
+              volumeMounts:
+                - name: promtail-storage
+                  mountPath: /var/log/myapp
+              envFrom:
+                - configMapRef:
+                    name: monitor-config-secrets
+
+          volumes:
+            - name: promtail-storage
+              persistentVolumeClaim:
+                claimName: promtail-python-pvc
+
+

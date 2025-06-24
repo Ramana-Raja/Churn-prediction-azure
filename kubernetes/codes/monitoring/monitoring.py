@@ -110,5 +110,5 @@ if __name__ == "__main__":
     while True:
         logging.info("Monitor started")
         monitor()
-        time.sleep(5 * 60 )
         logging.info("Monitor finished, next in 5 minutes")
+        time.sleep(5 * 60 )
