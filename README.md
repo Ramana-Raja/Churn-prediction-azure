@@ -58,7 +58,7 @@ Azure
 
 ## ⚙️ Tools & Tech
 
-* **Python** – Prediction & monitoring logic
+* **Python** – Prediction, monitoring and Retraining logic
 * **Evidently** – Drift detection
 * **Prometheus** – Metric scraping
 * **Grafana** – Dashboards for metrics and logs
