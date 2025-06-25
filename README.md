@@ -49,8 +49,8 @@ Azure
     ├── daemonset/                  # contains node-exporter.yaml and promtail.ymal
     ├── deployments/                # contains yaml files of grafana, loki, prometheus, monitoring.py, tempo
     ├── PersistentVolumeClaims/     # contians PersistentVolumeClaims for storing grafana, loki, promethesus and promtail data
-    └── service/                    # contains service fo grafana, loki, monitor, node-exporter, prometheus, tempo
-                                      so that they can communicate with each other.
+    ├── service/                    # contains service fo grafana, loki, monitor, node-exporter, prometheus, tempo so that they can communicate with each other.
+    └── namespace.yaml              # For creating "monitoring" namespace                
 
 ```
 
@@ -72,37 +72,43 @@ Azure
 
 ## 🚀 Usage
 * Make sure credentials are set in config maps
-### 1. Apply PersistentVolumeClaims
+
+### 1. Apply Namespace
+
+```bash
+kubectl apply -f Azure/kubernetes/namespace.yaml
+```
+### 2. Apply PersistentVolumeClaims
 
 ```bash
 kubectl apply -f Azure/kubernetes/PersistentVolumeClaims/
 ```
 
-### 2. Start applying Config Maps
+### 3. Start applying Config Maps
 
 ```bash
 kubectl apply -f Azure/kubernetes/config-maps/
 ```
 
-### 3. Apply deployments
+### 4. Apply deployments
 
 ```bash
 kubectl apply -f Azure/kubernetes/deployments/
 ```
 
-### 4. Apply daemonset
+### 5. Apply daemonset
 
 ```bash
 kubectl apply -f Azure/kubernetes/daemonset/
 ```
 
-### 5. Apply CronJob
+### 6. Apply CronJob
 
 ```bash
 kubectl apply -f Azure/kubernetes/CronJob/
 ```
 
-### 6. Apply services
+### 7. Apply services
 ```bash
 kubectl apply -f Azure/kubernetes/service/
 ```
