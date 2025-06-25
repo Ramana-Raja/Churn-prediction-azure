@@ -43,7 +43,7 @@ Azure
 │         ├── train_monitor.py     # Checks if data_drift_value > 0.05
 │         └── requirements.txt     # Requirements to run retrain.py and train_monitor.py
 │          
-└── kubernets/
+└── kubernetes/
     ├── config-maps/                # contains config for prometheus, tempo, loki, promtail, monitoring.py     
     ├── Cronjob/                    # contains Cronjob.yaml which checks whether model needs to be retrained or not
     ├── daemonset/                  # contains node-exporter.yaml and promtail.ymal
