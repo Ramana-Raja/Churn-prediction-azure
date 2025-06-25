@@ -12,6 +12,7 @@ A production-grade MLOps monitoring pipeline for detecting data drift, logging e
 * **Metrics Export via Prometheus**
 
   * Exposes custom metrics like `data_drift_value`, `drifted_columns_count`, and `missing_value_count` on a `/metrics` endpoint.
+  * Also uses Node Exporter for extra metrics.
 * **Logging via Loki & Promtail**
 
   * Streams application logs from mounted volumes to Grafana Loki.
